@@ -63,7 +63,7 @@ const ActividadUser = () => {
       const res = await axios.get(
         `${import.meta.env.VITE_API_BASE_URL}/api/respuestas/mis-respuestas?aprendiz=${aprendizId}`
       );
-      console.log("Mis respuestas recibidas:", res.data);
+      //console.log("Mis respuestas recibidas:", res.data);
 
       // Construir un mapa { actividadId: estado }
       const mapa = {};
@@ -73,7 +73,7 @@ const ActividadUser = () => {
         mapa[actId] = r.estado; // "Pendiente" | "Aprobado" | "Reprobado"
       });
       setEstadoRespuestas(mapa);
-      console.log("Mapa de estados:", mapa);
+      //console.log("Mapa de estados:", mapa);
     } catch (err) {
       toast.error("Error al obtener tus respuestas");
       console.error(err);
