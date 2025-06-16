@@ -28,7 +28,7 @@ const ResetPassword = () => {
     }
 
     try {
-      await axios.post(`http://localhost:5000/api/reset-password/${token}`, { password });
+      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/reset-password/${token}`, { password });
       toast.success("Contraseña actualizada. Inicia sesión");
       navigate("/login");
     } catch (err) {

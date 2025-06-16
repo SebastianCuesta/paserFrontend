@@ -17,7 +17,7 @@ const RevisionActividades = () => {
   // 1) Cargar todas las actividades para el dropdown
   const fetchActividades = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/api/actividades");
+      const { data } = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/actividades`);
       setActividades(data);
     } catch {
       toast.error("Error al obtener actividades");
@@ -40,7 +40,7 @@ const RevisionActividades = () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/api/actividades/${actividadId}/respuestas`
+        `${import.meta.env.VITE_API_BASE_URL}/api/actividades/${actividadId}/respuestas`
       );
       setRespuestas(data);
     } catch {

@@ -4,7 +4,7 @@ import { FaFilePdf, FaFileAlt, FaTimesCircle } from "react-icons/fa";
 import { toast } from "react-toastify";
 
 // BACKEND_BASE_URL para enlaces de descarga de la evidencia
-const BACKEND_BASE_URL = import.meta.env.VITE_BACKEND_URL;
+const BACKEND_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const AdminRevisionRespuestaModal = ({ respuesta, onClose }) => {
   const [estado, setEstado] = useState(respuesta.estado || "Pendiente");
@@ -21,7 +21,7 @@ const AdminRevisionRespuestaModal = ({ respuesta, onClose }) => {
     try {
       const payload = { estado, comentario };
       await axios.put(
-        `http://localhost:5000/api/actividades/respuestas/${respuesta._id}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/actividades/respuestas/${respuesta._id}`,
         payload
       );
       toast.success(`Respuesta marcada como ${estado}`);

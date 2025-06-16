@@ -22,7 +22,7 @@ const ActividadList = () => {
   const fetchActividades = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get("http://localhost:5000/api/actividades");
+      const { data } = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/actividades`);
       setActividades(data);
     } catch {
       toast.error("Error al obtener actividades");
@@ -69,7 +69,7 @@ const ActividadList = () => {
     });
     if (result.isConfirmed) {
       try {
-        await axios.delete(`http://localhost:5000/api/actividades/${id}`);
+        await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/api/actividades/${id}`);
         await fetchActividades();
         toast.success("Actividad eliminada correctamente");
       } catch {
@@ -106,7 +106,7 @@ const ActividadList = () => {
       }
 
       await axios.put(
-        `http://localhost:5000/api/actividades/${_id}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/actividades/${_id}`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -149,7 +149,7 @@ const ActividadList = () => {
       }
 
       await axios.post(
-        "http://localhost:5000/api/actividades",
+        `${import.meta.env.VITE_API_BASE_URL}/api/actividades`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },

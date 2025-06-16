@@ -1,0 +1,13 @@
+#render.yaml (en la raiz de tu repo)
+
+services:
+  # Frontend
+  - type: static
+    name: paserFrontend
+    branch: master
+    rootDir: paserFrontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://paserFrontend.onrender.com

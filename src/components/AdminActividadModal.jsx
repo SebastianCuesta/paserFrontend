@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaFilePdf, FaFileAlt, FaTimesCircle } from "react-icons/fa";
 
 // La variable de entorno definida en .env
-const BACKEND_BASE_URL = import.meta.env.VITE_BACKEND_URL;
+const BACKEND_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const AdminActividadModal = ({
   mode,                // "create" | "edit"

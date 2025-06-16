@@ -70,7 +70,7 @@ const UserList = () => {
           formData.append('file', file);
 
           const { data } = await axios.post(
-            'http://localhost:5000/api/bulk', 
+            `${import.meta.env.VITE_API_BASE_URL}/api/bulk`, 
             formData, 
             {
               headers: {
@@ -126,7 +126,7 @@ const UserList = () => {
   const fetchUsuarios = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get("http://localhost:5000/api/users");
+      const { data } = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/users`);
       setUsuarios(data);
     } catch {
       toast.error("Error al obtener usuarios");
@@ -153,7 +153,7 @@ const UserList = () => {
     });
     if (result.isConfirmed) {
       try {
-        await axios.delete(`http://localhost:5000/api/users/${id}`);
+        await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/api/users/${id}`);
         // Volvemos a traer la lista completa para reflejar el borrado
         await fetchUsuarios();
         toast.success("Usuario eliminado correctamente");
@@ -191,7 +191,7 @@ const UserList = () => {
   const handleSaveChanges = async () => {
     try {
       await axios.put(
-        `http://localhost:5000/api/users/${selectedUser._id}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/users/${selectedUser._id}`,
         selectedUser
       );
       // Después de editar, vuelvo a traer toda la lista
@@ -220,7 +220,7 @@ const UserList = () => {
         estado: selectedUser.estado,
       };
 
-      await axios.post("http://localhost:5000/api/register", payload);
+      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/register`, payload);
       // Después de crear, vuelvo a traer toda la lista
       await fetchUsuarios();
       setShowModal(false);

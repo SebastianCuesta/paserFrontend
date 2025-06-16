@@ -33,7 +33,7 @@ const ActividadUser = () => {
       const abiertas = data.filter((a) => new Date(a.fechaLimite) >= hoy);
       setActividades(abiertas); */
 
-      const { data } = await axios.get("http://localhost:5000/api/actividades");
+      const { data } = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/actividades`);
       setActividades(data);
     } catch (err) {
       toast.error("Error al obtener actividades");
@@ -61,7 +61,7 @@ const ActividadUser = () => {
       }
 
       const res = await axios.get(
-        `http://localhost:5000/api/respuestas/mis-respuestas?aprendiz=${aprendizId}`
+        `${import.meta.env.VITE_API_BASE_URL}/api/respuestas/mis-respuestas?aprendiz=${aprendizId}`
       );
       console.log("Mis respuestas recibidas:", res.data);
 

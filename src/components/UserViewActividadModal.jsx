@@ -50,7 +50,7 @@ const UserViewActividadModal = ({ actividad, onClose, onRefetch }) => {
                       href={
                         fileObj.url.startsWith("http")
                           ? fileObj.url
-                          : `${import.meta.env.VITE_BACKEND_URL}${fileObj.url}`
+                          : `${import.meta.env.VITE_API_BASE_URL}${fileObj.url}`
                       }
                       target="_blank"
                       rel="noopener noreferrer"

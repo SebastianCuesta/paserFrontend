@@ -32,7 +32,7 @@ const UserRespuestaModal = ({ actividad, onClose, onSuccess }) => {
 
       // Llamamos a /api/respuestas/mis-respuestas?aprendiz=<aprendizId>
       const { data } = await axios.get(
-        `http://localhost:5000/api/respuestas/mis-respuestas?aprendiz=${aprendizId}`
+        `${import.meta.env.VITE_API_BASE_URL}/api/respuestas/mis-respuestas?aprendiz=${aprendizId}`
       );
       const previa = data.find((r) => r.actividad._id === actividad._id);
       setRespuestaExistente(previa || null);
@@ -84,7 +84,7 @@ const UserRespuestaModal = ({ actividad, onClose, onSuccess }) => {
       formData.append("aprendizId", aprendizId);
 
       await axios.post(
-        `http://localhost:5000/api/respuestas/${actividad._id}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/respuestas/${actividad._id}`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
